@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nature Photography Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * { box-sizing: border-box; }
+        body { padding: 15px; background-color: #f4f4f4; font-family: Arial, sans-serif; margin: 0; }
+        .container { max-width: 1200px; margin: auto; }
+        .title { text-align: center; width: 100%; background-color: #3e8e41; padding: 20px 0; position: relative; }
+        h1 { color: white; margin: 0; }
+        .login-link { position: absolute; top: 20px; right: 20px; }
+        a { text-decoration: none; color: #5673C8; }
+        a:hover { color: lightblue; }
+        .login-link a { color: white; margin-left: 10px; }
+        .login-link a:hover { color: lightblue; }
+        p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin: 10px 0; }
+        .row { margin: 0 -18px; padding: 8px; display: flex; flex-wrap: wrap; }
+        .column { padding: 6px; width: 25%; transition: all 0.3s ease; cursor: pointer; }
+        .column:hover { transform: scale(1.05); box-shadow: 0 10px 8px rgba(0, 128, 0, 0.3); }
+        .content { background-color: white; padding: 10px; border: 1px solid gray; text-align: center; }
+        .content img { width: 100%; height: 200px; object-fit: cover; }
+        h3 { font-size: 1.4em; margin: 10px 0; }
+        h2 { color: #3e8e41; text-align: center; margin: 20px 0; }
+        .upload-section { margin: 20px 0; text-align: center; }
+        .upload-section input, .upload-section select { margin: 10px 0; }
+        .upload-section button { background-color: #3e8e41; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; }
+        .upload-section button:hover { background-color: #2e6e31; }
+        .gallery { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .gallery-item { position: relative; width: 200px; text-align: center; }
+        .gallery-item img { width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; }
+        .gallery-item button { background-color: #5673C8; color: white; padding: 5px; border: none; border-radius: 4px; cursor: pointer; margin-top: 5px; }
+        .gallery-item button:hover { background-color: #3e5a9e; }
+        .gallery-item p { margin: 5px 0; font-size: 14px; }
+        #sale-options { display: none; }
+        @media screen and (max-width: 850px) { .column { width: 50%; } }
+        @media screen and (max-width: 400px) { .column { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>Nature Photography Portfolio</h1>
+        <div class="login-link">
+            <a href="/login.html">Login</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <h3>Exploring the Beauty of Nature through Photography</h3>
+        <hr>
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <h2>Upload Your Image</h2>
+            <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <div class="form-group">
+                    <label>Is this an artwork?</label>
+                    <input type="checkbox" id="isArtwork" name="isArtwork" onchange="toggleSaleOptions()">
+                </div>
+                <div id="sale-options">
+                    <label>Available for sale?</label>
+                    <input type="checkbox" id="forSale" name="forSale" onchange="togglePriceInput()">
+                    <div id="price-input" style="display: none;">
+                        <label>Set Price (in $):</label>
+                        <input type="number" name="price" min="1" placeholder="Enter price">
+                    </div>
+                </div>
+                <button type="submit">Upload Image</button>
+            </form>
+        </div>
+        <!-- Uploaded Images Gallery -->
+        <h2>Your Uploaded Images</h2>
+        <div class="gallery" id="uploaded-gallery"></div>
+        <h2>Photography Categories</h2>
+        <div class="row">
+            <div class="column">
+                <div class="content">
+                    <a href="/our-artworks.html#forest">
+                        <img src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk=" alt="forest">
+                        <h3>Forest Photography</h3>
+                    </a>
+                    <p>Capture the serenity and mystique of forests with lush trees, sunlight filtering through the canopy, and the diverse wildlife that calls the forest home.</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <a href="/our-artworks.html#mountain">
+                        <img src="https://cdn.visualwilderness.com/wp-content/uploads/2019/12/Norway-Landscape-Photography-3.jpg" alt="mountain">
+                        <h3>Mountain Photography</h3>
+                    </a>
+                    <p>Experience the towering peaks, sweeping vistas, and breathtaking landscapes that define the majesty of the world's most iconic mountain ranges.</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <a href="/our-artworks.html#ocean">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn&utm9GcRD3fKHg9-THfJ23fURU8VhHaO1IGrDvaLAKg&s" alt="ocean">
+                        <h3>Ocean Photography</h3>
+                    </a>
+                    <p>The ocean's vastness and beauty come alive through the camera lens, capturing waves crashing against the shore, tranquil beaches, and marine life in motion.</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <a href="/our-artworks.html#wildlife">
+                        <img src="https://www.thrillophilia.com/blog/wp-content/uploads/2017/04/shutterstock_694592521.jpg" alt="wildlife">
+                        <h3>Wildlife Photography</h3>
+                    </a>
+                    <p>Immortalize the raw beauty of wildlife in its natural habitat. From majestic lions to graceful birds, wildlife photography captures the essence of the animal kingdom.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sale options visibility
+        function toggleSaleOptions() {
+            const isArtwork = document.getElementById('isArtwork').checked;
+            document.getElementById('sale-options').style.display = isArtwork ? 'block' : 'none';
+            document.getElementById('forSale').checked = false;
+            togglePriceInput();
+        }
+
+        // Toggle price input visibility
+        function togglePriceInput() {
+            const forSale = document.getElementById('forSale').checked;
+            document.getElementById('price-input').style.display = forSale ? 'block' : 'none';
+        }
+
+        // Load existing uploaded images
+        fetch('/get-uploaded-images')
+            .then(response => response.json())
+            .then(images => {
+                const gallery = document.getElementById('uploaded-gallery');
+                images.forEach(image => {
+                    addImageToGallery(image);
+                });
+            })
+            .catch(error => console.error('Error fetching images:', error));
+
+        // Handle form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.image) {
+                    addImageToGallery(data.image);
+                    alert(data.message);
+                } else {
+                    alert('Upload failed!');
+                }
+            })
+            .catch(error => {
+                console.error('Error uploading image:', error);
+                alert('Error uploading image!');
+            });
+        });
+
+        // Add image to gallery
+        function addImageToGallery(image) {
+            const gallery = document.getElementById('uploaded-gallery');
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = image.path;
+
+            const info = document.createElement('p');
+            info.textContent = image.isArtwork ? (image.forSale ? `Price: $${image.price}` : 'Artwork (Not for Sale)') : 'Not an Artwork';
+
+            if (image.forSale) {
+                const buyButton = document.createElement('button');
+                buyButton.textContent = 'Buy';
+                buyButton.onclick = function() {
+                    fetch('/buy-image', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ imagePath: image.path })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(`${data.message} Download link: ${data.downloadLink}`);
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error buying image:', error);
+                        alert('Error processing payment!');
+                    });
+                };
+                galleryItem.appendChild(buyButton);
+            }
+
+            galleryItem.appendChild(imgElement);
+            galleryItem.appendChild(info);
+            gallery.appendChild(galleryItem);
+        }
+    </script>
+</body>
+</html>

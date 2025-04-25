@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wildlife Photography Gallery</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            margin: 0;
+        }
+        h1 { text-align: center; color: #3e8e41; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+        .back-button {
+            background-color: #3e8e41;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media screen and (max-width: 850px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+        @media screen and (max-width: 400px) { .gallery { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <h1>Wildlife Photography Gallery</h1>
+    <div class="gallery">
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2R_LL-ckMC_jczQeUdP9fgnw1SrPrh-ESOQ&s" alt="Wildlife Photo 1"></div>
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF1wHHq6PKNXIyGTspt_n36XyYKtxsYkpOiA&s" alt="Wildlife Photo 2"></div>
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXbACB9bxtRuo7rV0QILnvd41-02cJ9jUipQ&s" alt="Wildlife Photo 3"></div>
+    </div>
+    <div class="back-button" onclick="window.history.back();">Back to Categories</div>
+</body>
+</html>

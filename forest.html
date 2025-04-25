@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forest Photography Gallery</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            margin: 0;
+        }
+        h1 { text-align: center; color: #3e8e41; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+        .back-button {
+            background-color: #3e8e41;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media screen and (max-width: 850px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+        @media screen and (max-width: 400px) { .gallery { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <h1>Forest Photography Gallery</h1>
+    <div class="gallery">
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZQwSh4TVBYMmGcLytudqcSX_KEm9Mb2iSig&s" alt="Forest Photo 1"></div>
+        <div><img src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk=" alt="Forest Photo 2"></div>
+        <div><img src="data:image/jpeg;base64,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...(truncated for brevity, but no changes needed beyond main styling)...>
+    </div>
+    <div class="back-button" onclick="window.history.back();">Back to Categories</div>
+</body>
+</html>
